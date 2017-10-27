@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BittrexApiTest
 {
@@ -12,16 +9,16 @@ namespace BittrexApiTest
         public class MarketHistory
         {
             [JsonProperty("TimeStamp")]
-            public string TimeStamp { get; set; }
+            public DateTime TimeStamp { get; set; }
 
             [JsonProperty("Quantity")]
-            public string Quantity { get; set; }
+            public decimal Quantity { get; set; }
 
             [JsonProperty("Price")]
-            public string Price { get; set; }
+            public decimal Price { get; set; }
 
             [JsonProperty("Total")]
-            public string Total { get; set; }
+            public decimal Total { get; set; }
 
             [JsonProperty("FillType")]
             public string FillType { get; set; }
@@ -38,7 +35,9 @@ namespace BittrexApiTest
         public string Message { get; set; }
 
         [JsonProperty("result")]
-        public IList<MarketHistory> Result { get; set; }
+        public List<MarketHistory> Result { get; set; }
+
+        public string ErrorMessage { get; set; }
     }
 
 }

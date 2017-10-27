@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BittrexApiTest
 {
@@ -40,6 +36,8 @@ namespace BittrexApiTest
         public string Message { get; set; }
 
         [JsonProperty("result")]
-        public IEnumerable<Currencies> Result { get; set; }
+        public List<Currencies> Result { get; set; }
+
+        public string ErrorMessage { get; set; }
     }
 }

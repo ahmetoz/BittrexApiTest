@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BittrexApiTest
 {
@@ -24,16 +21,19 @@ namespace BittrexApiTest
             public string BaseCurrencyLong { get; set; }
 
             [JsonProperty("MinTradeSize")]
-            public string MinTradeSize { get; set; }
+            public decimal MinTradeSize { get; set; }
 
             [JsonProperty("MarketName")]
             public string MarketName { get; set; }
 
             [JsonProperty("IsActive")]
-            public string IsActive { get; set; }
+            public bool IsActive { get; set; }
 
             [JsonProperty("Created")]
-            public string Created { get; set; }
+            public DateTime Created { get; set; }
+
+            [JsonProperty("LogoUrl")]
+            public string LogoUrl { get; set; }
         }
 
         [JsonProperty("success")]
@@ -43,6 +43,8 @@ namespace BittrexApiTest
         public string Message { get; set; }
 
         [JsonProperty("result")]
-        public IEnumerable<Markets> Result { get; set; }
+        public List<Markets> Result { get; set; }
+
+        public string ErrorMessage { get; set; }
     }
 }

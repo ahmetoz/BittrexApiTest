@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿
+using RestSharp;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Web.Http;
 
 namespace BittrexApiTest.Controllers
@@ -41,6 +39,14 @@ namespace BittrexApiTest.Controllers
         public string Demo()
         {
             return "OK";
+        }
+
+        [HttpGet]
+        [Route("api/test")]
+        public string Test()
+        {
+            
+            return "a";
         }
     }
 }
