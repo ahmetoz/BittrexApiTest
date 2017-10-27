@@ -7,7 +7,6 @@ namespace BittrexApiTest.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Bittrex API Operations";
             return View();
         }
 
