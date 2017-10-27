@@ -1,0 +1,151 @@
+﻿
+@model  MarketSummaryRoot
+@{
+    ViewBag.Title = "NEO";
+}
+
+
+@{
+    if (Model.Success)
+    {<section>
+        <hr />
+        <h1>NEO Market Summary</h1>
+        <hr />
+
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <th class="tbl-header">Market Adı</th>
+                <td class="tbl-content">@Model.Result.First().MarketName</td>
+            </tr>
+            <tr>
+                <th class="tbl-header">Fiyat</th>
+                <td class="tbl-content">@Model.Result.First().Last</td>
+            </tr>
+            <tr>
+                <th class="tbl-header">24hr Hacim (BTC)</th>
+                <td class="tbl-content">@Model.Result.First().BaseVolume</td>
+            </tr>
+
+            <tr>
+                <th class="tbl-header">24hr Hacim (ALT)</th>
+                <td class="tbl-content">@Model.Result.First().Volume</td>
+            </tr>
+
+            <tr>
+                <th class="tbl-header">Bekleyen Alış Emirleri (*)</th>
+                <td class="tbl-content">@Model.Result.First().OpenBuyOrders</td>
+            </tr>
+
+            <tr>
+                <th class="tbl-header">Bekleyen Satış Emirleri (*)</th>
+                <td class="tbl-content">@Model.Result.First().OpenSellOrders</td>
+            </tr>
+
+            <tr>
+                <th class="tbl-header">Alış Fiyatı</th>
+                <td class="tbl-content">@Model.Result.First().Bid</td>
+            </tr>
+
+            <tr>
+                <th class="tbl-header">Satış Fiyatı</th>
+                <td class="tbl-content">@Model.Result.First().Ask</td>
+            </tr>
+
+            <tr>
+                <th class="tbl-header">24hr En Yüksek Fiyatı</th>
+                <td class="tbl-content">@Model.Result.First().High</td>
+            </tr>
+
+            <tr>
+                <th class="tbl-header">24hr En Düşük Fiyatı</th>
+                <td class="tbl-content">@Model.Result.First().Low</td>
+            </tr>
+
+            <tr>
+                <th class="tbl-header">Dünkü Fiyatı</th>
+                <td>@Model.Result.First().PrevDay</td>
+            </tr>
+
+            <tr>
+                <th class="tbl-header">Borsaya Giriş Tarihi</th>
+                <td class="tbl-content">@Model.Result.First().Created</td>
+            </tr>
+        </table>
+    </section>
+    }
+    else
+    {
+        <span>@Model.Message</span>
+    }
+}
+
+<style>
+    h1 {
+        font-size: 30px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .tbl-header {
+        background-color: rgba(255,255,255,0.3);
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .tbl-content {
+        height: 20px;
+        overflow-x: auto;
+        margin-top: 0px;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    th {
+        padding: 20px 15px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    td {
+        padding: 15px;
+        text-align: left;
+        vertical-align: middle;
+        font-weight: 300;
+        font-size: 12px;
+        color: #fff;
+        border-bottom: solid 1px rgba(255,255,255,0.1);
+    }
+
+    @@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+    body {
+        background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+        background: linear-gradient(to right, #25c481, #25b7c4);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    section {
+        margin: 50px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+</style>

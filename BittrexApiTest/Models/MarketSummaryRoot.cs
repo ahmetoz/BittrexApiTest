@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BittrexApiTest
 {
@@ -15,37 +12,37 @@ namespace BittrexApiTest
             public string MarketName { get; set; }
 
             [JsonProperty("High")]
-            public string High { get; set; }
+            public decimal High { get; set; }
 
             [JsonProperty("Low")]
-            public string Low { get; set; }
+            public decimal Low { get; set; }
 
             [JsonProperty("Last")]
-            public string Last { get; set; }
+            public decimal Last { get; set; }
 
             [JsonProperty("BaseVolume")]
-            public string BaseVolume { get; set; }
+            public decimal BaseVolume { get; set; }
 
             [JsonProperty("Volume")]
-            public string Volume { get; set; }
+            public decimal Volume { get; set; }
 
             [JsonProperty("Bid")]
-            public string Bid { get; set; }
+            public decimal Bid { get; set; }
 
             [JsonProperty("Ask")]
-            public string Ask { get; set; }
+            public decimal Ask { get; set; }
 
             [JsonProperty("OpenBuyOrders")]
-            public string OpenBuyOrders { get; set; }
+            public int OpenBuyOrders { get; set; }
 
             [JsonProperty("OpenSellOrders")]
-            public string OpenSellOrders { get; set; }
+            public int OpenSellOrders { get; set; }
 
             [JsonProperty("Created")]
-            public string Created { get; set; }
+            public DateTime Created { get; set; }
 
             [JsonProperty("PrevDay")]
-            public string PrevDay { get; set; }
+            public decimal PrevDay { get; set; }
         }
 
         [JsonProperty("success")]
@@ -55,6 +52,8 @@ namespace BittrexApiTest
         public string Message { get; set; }
 
         [JsonProperty("result")]
-        public IEnumerable<MarketSummary> Result { get; set; }
+        public List<MarketSummary> Result { get; set; }
+
+        public string ErrorMessage { get; set; }
     }
 }

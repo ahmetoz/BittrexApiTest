@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BittrexApiTest
 {
@@ -12,10 +8,10 @@ namespace BittrexApiTest
         public class OrderBook
         {
             [JsonProperty("Quantity")]
-            public string Quantity { get; set; }
+            public decimal Quantity { get; set; }
 
             [JsonProperty("Rate")]
-            public string Rate { get; set; }
+            public decimal Rate { get; set; }
         }
 
         [JsonProperty("success")]
@@ -25,6 +21,8 @@ namespace BittrexApiTest
         public string Message { get; set; }
 
         [JsonProperty("result")]
-        public IEnumerable<OrderBook> Result { get; set; }
+        public List<OrderBook> Result { get; set; }
+
+        public string ErrorMessage { get; set; }
     }
 }

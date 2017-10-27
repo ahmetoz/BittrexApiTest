@@ -1,0 +1,127 @@
+﻿
+@model  MarketsRoot
+@{
+    ViewBag.Title = "Markets";
+}
+
+@{
+    if (Model.Success)
+    {
+        <section>
+            <hr />
+            <h1>Markets</h1>
+            <hr />
+            <div class="tbl-header">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                        <tr>
+                            <th> </th>
+                            <th>Market Adı</th>
+                            <th>Market Kodu</th>
+                            <th>Coin Adı</th>
+                            <th>Temel Para Birim Kodu</th>
+                            <th>Temel Para Birim Adı</th>
+                            <th>Aktif</th>
+                            <th>Minimum Trade Miktarı</th>
+                            <th>Borsaya Giriş Tarihi</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tbl-content">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                        @foreach (var item in Model.Result)
+                {
+                            <tr>
+                                <td> <img src="@item.LogoUrl" alt="" style="width:20px; height:20px;" /> </td>
+                                <td>@item.MarketName</td>
+                                <td>@item.MarketCurrency</td>
+                                <td>@item.MarketCurrencyLong</td>
+                                <td>@item.BaseCurrency</td>
+                                <td>@item.BaseCurrencyLong</td>
+                                <td>@item.IsActive</td>
+                                <td>@item.MinTradeSize</td>
+                                <td>@item.Created</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    }
+    else
+    {
+        <span>@Model.Message</span>
+    }
+}
+
+<style>
+    h1 {
+        font-size: 30px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .tbl-header {
+        background-color: rgba(255,255,255,0.3);
+    }
+
+    .tbl-content {
+        height: 300px;
+        overflow-x: auto;
+        margin-top: 0px;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    th {
+        padding: 20px 15px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    td {
+        padding: 15px;
+        text-align: left;
+        vertical-align: middle;
+        font-weight: 300;
+        font-size: 12px;
+        color: #fff;
+        border-bottom: solid 1px rgba(255,255,255,0.1);
+    }
+
+    @@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+    body {
+        background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+        background: linear-gradient(to right, #25c481, #25b7c4);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    section {
+        margin: 50px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+</style>
