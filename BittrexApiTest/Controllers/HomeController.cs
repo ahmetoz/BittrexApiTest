@@ -5,11 +5,6 @@ namespace BittrexApiTest.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult Coins()
         {
             var client = new RestClient("https://bittrex.com/api/v1.1/public/getcurrencies");
@@ -27,37 +22,34 @@ namespace BittrexApiTest.Controllers
             return View(model.Data);
         }
 
-        public ActionResult MarketSummary(string coinCode = null)
+        public ActionResult MarketSummary(string coin = null)
         {
-            coinCode = "NEO";
-
-            var client = new RestClient("http://bittrex.com/api/v1.1/public/getmarketsummary?market=BTC-" + coinCode);
+            var client = new RestClient("http://bittrex.com/api/v1.1/public/getmarketsummary?market=BTC-" + coin);
             var request = new RestRequest(Method.GET);
             var model = client.Execute<MarketSummaryRoot>(request);
 
+            ViewBag.Coin = coin;
             return View(model.Data);
         }
 
-        public ActionResult Orders(string orderType, string coinCode = null)
+        public ActionResult Orders(string orderType, string coin = null)
         {
-            coinCode = "NEO";
-
-            var client = new RestClient("https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-" + coinCode);
+            var client = new RestClient("https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-" + coin);
             var request = new RestRequest(Method.GET).AddParameter("type", orderType);
             var model = client.Execute<OrderBookRoot>(request);
-
+            
+            ViewBag.Coin = coin;
             ViewBag.OrderType = orderType;
             return View(model.Data);
         }
 
-        public ActionResult MarketHistory(string coinCode = null)
+        public ActionResult MarketHistory(string coin = null)
         {
-            coinCode = "NEO";
-
-            var client = new RestClient("https://bittrex.com/api/v1.1/public/getmarkethistory?market=BTC-" + coinCode);
+            var client = new RestClient("https://bittrex.com/api/v1.1/public/getmarkethistory?market=BTC-" + coin);
             var request = new RestRequest(Method.GET);
             var model = client.Execute<MarketHistoryRoot>(request);
 
+            ViewBag.Coin = coin;
             return View(model.Data);
         }
     }

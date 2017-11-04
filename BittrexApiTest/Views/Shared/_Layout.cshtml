@@ -16,16 +16,51 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @*@Html.ActionLink("Bittrex API Operations", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Coins", "Coins", "Home")</li>
                     <li>@Html.ActionLink("Markets", "Markets", "Home")</li>
-                    <li>@Html.ActionLink("NEO Market Summary", "MarketSummary", "Home")</li>
-                    <li>@Html.ActionLink("NEO Sell Orders", "Orders", "Home", new { orderType = "sell" }, null)</li>
-                    <li>@Html.ActionLink("NEO Buy Orders", "Orders", "Home", new { orderType = "buy" }, null)</li>
-                    <li>@Html.ActionLink("NEO Market History", "MarketHistory", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Market Summaries<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("NEO", "MarketSummary", "Home", new { coin = "neo" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Monaco", "MarketSummary", "Home", new { coin = "mco" }, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Sell Orders<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("NEO", "Orders", "Home", new { orderType = "sell", coin = "neo" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Monaco", "Orders", "Home", new { orderType = "sell", coin = "mco" }, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Buy Orders<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("NEO", "Orders", "Home", new { orderType = "buy", coin = "neo" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Monaco", "Orders", "Home", new { orderType = "buy", coin = "mco" }, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Market Histories<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("NEO", "MarketHistory", "Home", new { coin = "neo" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Monaco", "MarketHistory", "Home", new { coin = "mco" }, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Twitter<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("NEO", "Details", "Twitter", new { screenName = "neo_blockchain" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Monaco", "Details", "Twitter", new { screenName = "monaco_card" }, null)</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -34,12 +69,9 @@
         @RenderBody()
         <hr />
         <footer>
-
-            <p>&copy; @DateTime.Now.Year - BTS</p>
-
+            <p>&copy; @DateTime.Now.Year - Bittrex / Twitter API Tests</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

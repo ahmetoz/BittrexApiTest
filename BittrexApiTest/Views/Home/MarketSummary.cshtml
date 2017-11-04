@@ -4,81 +4,70 @@
     ViewBag.Title = "Bittrex API Operations";
 }
 
-
 @{
     if (Model.Success)
-    {<section>
-        <hr />
-        <h1>NEO Market Summary</h1>
-        <hr />
-
-        <table cellpadding="0" cellspacing="0" border="0">
-            <tr>
-                <th class="tbl-header">Market Adı</th>
-                <td class="tbl-content">@Model.Result.First().MarketName</td>
-            </tr>
-            <tr>
-                <th class="tbl-header">Fiyat</th>
-                <td class="tbl-content">@Model.Result.First().Last</td>
-            </tr>
-            <tr>
-                <th class="tbl-header">24hr Hacim (BTC)</th>
-                <td class="tbl-content">@Model.Result.First().BaseVolume</td>
-            </tr>
-
-            <tr>
-                <th class="tbl-header">24hr Hacim (ALT)</th>
-                <td class="tbl-content">@Model.Result.First().Volume</td>
-            </tr>
-
-            <tr>
-                <th class="tbl-header">Bekleyen Alış Emirleri (*)</th>
-                <td class="tbl-content">@Model.Result.First().OpenBuyOrders</td>
-            </tr>
-
-            <tr>
-                <th class="tbl-header">Bekleyen Satış Emirleri (*)</th>
-                <td class="tbl-content">@Model.Result.First().OpenSellOrders</td>
-            </tr>
-
-            <tr>
-                <th class="tbl-header">Alış Fiyatı</th>
-                <td class="tbl-content">@Model.Result.First().Bid</td>
-            </tr>
-
-            <tr>
-                <th class="tbl-header">Satış Fiyatı</th>
-                <td class="tbl-content">@Model.Result.First().Ask</td>
-            </tr>
-
-            <tr>
-                <th class="tbl-header">24hr En Yüksek Fiyatı</th>
-                <td class="tbl-content">@Model.Result.First().High</td>
-            </tr>
-
-            <tr>
-                <th class="tbl-header">24hr En Düşük Fiyatı</th>
-                <td class="tbl-content">@Model.Result.First().Low</td>
-            </tr>
-
-            <tr>
-                <th class="tbl-header">Dünkü Fiyatı</th>
-                <td>@Model.Result.First().PrevDay</td>
-            </tr>
-
-            <tr>
-                <th class="tbl-header">Borsaya Giriş Tarihi</th>
-                <td class="tbl-content">@Model.Result.First().Created</td>
-            </tr>
-        </table>
-    </section>
+    {
+        <section>
+            <hr />
+            <h1>@ViewBag.Coin Market Summary</h1>
+            <hr />
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <th class="tbl-header">Market Adı</th>
+                    <td class="tbl-content">@Model.Result.First().MarketName</td>
+                </tr>
+                <tr>
+                    <th class="tbl-header">Fiyat</th>
+                    <td class="tbl-content">@Model.Result.First().Last</td>
+                </tr>
+                <tr>
+                    <th class="tbl-header">24hr Hacim (BTC)</th>
+                    <td class="tbl-content">@Model.Result.First().BaseVolume</td>
+                </tr>
+                <tr>
+                    <th class="tbl-header">24hr Hacim (ALT)</th>
+                    <td class="tbl-content">@Model.Result.First().Volume</td>
+                </tr>
+                <tr>
+                    <th class="tbl-header">Bekleyen Alış Emirleri (*)</th>
+                    <td class="tbl-content">@Model.Result.First().OpenBuyOrders</td>
+                </tr>
+                <tr>
+                    <th class="tbl-header">Bekleyen Satış Emirleri (*)</th>
+                    <td class="tbl-content">@Model.Result.First().OpenSellOrders</td>
+                </tr>
+                <tr>
+                    <th class="tbl-header">Alış Fiyatı</th>
+                    <td class="tbl-content">@Model.Result.First().Bid</td>
+                </tr>
+                <tr>
+                    <th class="tbl-header">Satış Fiyatı</th>
+                    <td class="tbl-content">@Model.Result.First().Ask</td>
+                </tr>
+                <tr>
+                    <th class="tbl-header">24hr En Yüksek Fiyatı</th>
+                    <td class="tbl-content">@Model.Result.First().High</td>
+                </tr>
+                <tr>
+                    <th class="tbl-header">24hr En Düşük Fiyatı</th>
+                    <td class="tbl-content">@Model.Result.First().Low</td>
+                </tr>
+                <tr>
+                    <th class="tbl-header">Dünkü Fiyatı</th>
+                    <td>@Model.Result.First().PrevDay</td>
+                </tr>
+                <tr>
+                    <th class="tbl-header">Borsaya Giriş Tarihi</th>
+                    <td class="tbl-content">@Model.Result.First().Created</td>
+                </tr>
+            </table>
+        </section>
     }
     else
     {
         <span>@Model.Message</span>
     }
 }
-
 <style>
     h1 {
         font-size: 30px;
@@ -107,7 +96,7 @@
     }
 
     th {
-        padding: 20px 15px;
+        padding: 15px 15px;
         text-align: left;
         font-weight: 500;
         font-size: 12px;
